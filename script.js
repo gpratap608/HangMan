@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+
     // Your code here
     // ...
     
@@ -26,52 +26,48 @@ document.addEventListener("DOMContentLoaded", function () {
     for(let i = 0 ; i < randomFruitName.length ; i++){
         a.push(randomFruitName[i])
     }
-    function listGenerate(){
-        for (let i = 0 ; i < randomFruitName.length ; i++) {
-            let ele = document.createElement("li")
-            ele.innerHTML = " _ "
-            ele.className = "liItem"
-            let ulItems = document.querySelector("ul.guessList")
-            ulItems.appendChild(ele)
-        }
-        word = document.querySelectorAll(".liItem")
-        console.log(word)
-        document.querySelector("#gameStart").removeEventListener("click",listGenerate)
-    }
-    document.querySelector("#gameStart").addEventListener("click",listGenerate)
-    
-
     console.log(a)
     let b = [...a]
-    //Rendor Random Dashes
-    let guessList = document.querySelector("#guessList")
-    guessList.innerHTML = dashes
+    //selecting <ul> </ul> item
+    for (let i=0;i<randomFruitName.length;i++){
+        let ulItem = document.querySelector("#guessList")
+        
+        //Creating Element
 
-    const keys = document.querySelectorAll(".Keys")
+        let listElement = document.createElement("li")
+        listElement.innerHTML = " _ "
+        listElement.setAttribute("class","liItem")
+
+        //adding li item to ul tag
+
+        ulItem.appendChild(listElement)
+    }
+    
 
     let wrongGuess = 0
     let rightGuess = randomFruitName.length
 
-    
-    keys.forEach( (event) => {
+    let liArray = document.querySelectorAll(".liItem")
+    const keys = document.querySelectorAll(".Keys")
+    keys.forEach((event)=>{
         event.addEventListener("click",()=>{
             let clicked = event.innerHTML
-            console.log(clicked)
-            if(a.includes(clicked)){
-                rightGuess--
-                for(let i=0; i<randomFruitName.length; i++){
-                    if(randomFruitName[i]===clicked){
-                        word[i].innerHTML = clicked
-                    }else{
-                        
+            console.log(event)
+            if(rightGuess != 0 && wrongGuess < 10){    
+                if(a.includes(clicked)){
+                    for(let i = 0; i < a.length ; i++){
+                        if(a[i] === clicked){
+                            liArray[i].innerHTML = a[i]
+                        }
                     }
+                    rightGuess--
+                }else{
+                    wrongGuess++
                 }
-            }else{
-                wrongGuess++
-            }
-            console.log(rightGuess)
-            console.log(wrongGuess)
-            console.log(b)
-            })
+            }  
+            event.innerHTML = " "
+            console.log(rightGuess,wrongGuess) 
         })
-});
+         
+    })
+      
