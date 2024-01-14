@@ -58,6 +58,7 @@
                     for(let i = 0; i < a.length ; i++){
                         if(a[i] === clicked){
                             liArray[i].innerHTML = a[i]
+                            
                         }
                     }
                     rightGuess--
@@ -66,6 +67,9 @@
                 }
             }  
             event.innerHTML = " "
+            event.setAttribute("id","deleteElement")
+            let element = document.querySelector("#deleteElement")
+            element.parentNode.removeChild(element)
             console.log(rightGuess,wrongGuess) 
         })
          
