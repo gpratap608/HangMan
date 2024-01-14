@@ -1,6 +1,4 @@
 
-    // Your code here
-    // ...
     
   
   // JS List of Fruits
@@ -26,7 +24,6 @@
     for(let i = 0 ; i < randomFruitName.length ; i++){
         a.push(randomFruitName[i])
     }
-    console.log(a)
     let b = [...a]
     //selecting <ul> </ul> item
     for (let i=0;i<randomFruitName.length;i++){
@@ -52,7 +49,6 @@
     keys.forEach((event)=>{
         event.addEventListener("click",()=>{
             let clicked = event.innerHTML
-            console.log(event)
             if(rightGuess != 0 && wrongGuess < 10){    
                 if(a.includes(clicked)){
                     for(let i = 0; i < a.length ; i++){
@@ -70,7 +66,6 @@
             event.setAttribute("id","deleteElement")
             let element = document.querySelector("#deleteElement")
             element.parentNode.removeChild(element)
-            console.log(rightGuess,wrongGuess) 
         })
          
     })
